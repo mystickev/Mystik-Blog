@@ -23,6 +23,7 @@ export function renderMarkdown(text) {
     .replace(/\*\*(.+?)\*\*/g, '<strong style="color:#dddde8;font-weight:500;">$1</strong>')
     .replace(/`([^`]+)`/g,
       '<code style="font-family:\'JetBrains Mono\',monospace;font-size:12px;background:#0f0f14;border:1px solid #25253a;padding:2px 6px;border-radius:4px;color:#5ef5b8;">$1</code>')
+    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="max-width:100%;border-radius:8px;margin:16px 0;border:1px solid #25253a;" />')
 
     // Lists
     .replace(/^(\d+)\. (.+)$/gm, '<li style="margin-bottom:6px;color:#8888a8;">$2</li>')
