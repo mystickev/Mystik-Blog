@@ -105,12 +105,13 @@ export const DEFAULT_RESOURCES = [
 // -- About default data ----------------------------------------------------
 // Managed via Admin Dashboard -> About. Saved to localStorage.
 export const DEFAULT_ABOUT = {
-  tagline: "Dissecting the adversary's craft.",
-  bio: "I'm Mystik -- a threat hunter and malware analyst leading a Threat Vulnerability Management team within a SOC environment. I work across Linux and Windows endpoints, building detections, hunting adversaries, and doing the occasional deep dive into malware that's doing its best to stay hidden.\n\nDay-to-day, I live in Wazuh, Kibana, and Cynet EDR. Beyond the tooling, I'm invested in understanding the why behind tradecraft -- from how adversaries abuse LOLBins to how implants achieve persistence and evade behavioural detection.\n\nThis blog is my public lab notebook. Everything here is mapped to MITRE ATT&CK where applicable.",
-  skills: "Malware Reverse Engineering, Threat Hunting, Wazuh Detection Rules, MITRE ATT&CK, LOLBin Analysis, Incident Response, Malware Development, Windows Internals, Lateral Movement Analysis, Threat Intelligence, EDR Telemetry, C2 Detection",
-  tools: "Wazuh · Kibana · Cynet EDR · Ghidra · x64dbg · YARA · CrackMapExec · Nessus · Atomic Red Team · Volatility · Wireshark · Python · C/C++",
+  tagline: "Where offensive techniques meet defensive logic.",
+  bio: "I focus primarily on analysis and research within cybersecurity. My digital forensics skills are my strongest suit, with proficiency in memory forensics, network forensics, log analysis, malware reverse engineering, and file format analysis.\n\nI keep myself well-informed on the cyber threat landscape, which has enhanced my threat intelligence abilities over the years. I also have experience working with popular SIEM and EDR solutions.\n\nBeyond my blue team expertise, I'm actively upskilling to become a purple teamer. I dedicate time to learning offensive skills, particularly malware development and adversary technique emulation.\n\nI enjoy the collaborative nature of the cybersecurity community and its constant challenges -- it's this that fuels my desire to learn and grow.",
+  skills: "Memory Forensics, Network Forensics, Log Analysis, Malware Reverse Engineering, File Format Analysis, Threat Intelligence, Threat Hunting, Wazuh Detection Rules, MITRE ATT&CK, LOLBin Analysis, Incident Response, Malware Development, Windows Internals, EDR Telemetry, C2 Detection",
+  tools: "Wazuh · Kibana · Cynet EDR · Ghidra · x64dbg · YARA · Volatility · Wireshark · CrackMapExec · Nessus · Atomic Red Team · Python · C/C++",
   certs: "Threat Hunting Practitioner, SOC Analyst L2, Wazuh Detection Engineering, MITRE ATT&CK Fundamentals",
-  openTo: "CTF collaborations, threat intel sharing, and peer review of malware write-ups."
+  openTo: "CTF collaborations, threat intel sharing, peer review of malware write-ups, and purple team exercises.",
+  projects: "Detections Rules & IOCs :: A public repository of YARA rules, Wazuh detection rules, and IOC registers including an Africa-focused threat intel feed. :: https://github.com/mystickev/Detections-rules-IOCs || Mystik Blog :: This site -- a self-built static blog using React and Vite, deployed on GitHub Pages with a custom admin dashboard and .md file-based post management. :: https://mystikev.co.ke",
 }
 
 // -- Tag configuration -----------------------------------------------------
