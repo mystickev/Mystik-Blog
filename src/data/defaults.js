@@ -58,6 +58,7 @@ export const ALL_TAGS = [
   "Threat Intel",
   "Malware Development",
   "Forensics",
+  "Malware Analysis"
 ]
 
 export const TAG_STYLES = {
@@ -68,4 +69,5 @@ export const TAG_STYLES = {
   "Threat Intel":       { color: "#a78bfa", bg: "rgba(167,139,250,0.12)" },
   "Malware Development":       { color: "#f5904a", bg: "rgba(245,144,74,0.12)" },
   "Forensics":       { color: "#c8956c", bg: "rgba(200,149,108,0.12)" },
+  "Malware Analysis": { color: "#a855f7", bg: "rgba(168,85,247,0.12)" },
 }
