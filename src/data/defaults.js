@@ -3,7 +3,24 @@
 // Resources and About are still managed via admin dashboard + localStorage
 // To add a new post: create a .md file in src/posts/ with frontmatter, commit and push.
 
-import { parse } from 'gray-matter'
+// -- Browser-safe frontmatter parser --------------------------------------
+// Replaces gray-matter which uses Node.js Buffer -- not available in browser.
+// Parses the --- block at the top of .md files into a data object + content.
+function parseFrontmatter(raw) {
+  const match = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/)
+  if (!match) return { data: {}, content: raw }
+
+  const data = {}
+  match[1].split('\n').forEach(line => {
+    const colon = line.indexOf(':')
+    if (colon === -1) return
+    const key = line.slice(0, colon).trim()
+    const value = line.slice(colon + 1).trim()
+    data[key] = value
+  })
+
+  return { data, content: match[2].trim() }
+}
 
 // -- Load all .md files from src/posts/ at build time ---------------------
 // Vite resolves these at build time -- no runtime file system access needed.
@@ -21,11 +38,11 @@ import { parse } from 'gray-matter'
 //
 // Content goes here in Markdown...
 
-const mdFiles = import.meta.glob('../posts/*.md', { as: 'raw', eager: true })
+const mdFiles = import.meta.glob('../posts/*.md', { query: '?raw', import: 'default', eager: true })
 
 export const POSTS = Object.entries(mdFiles)
   .map(([path, raw]) => {
-    const { data, content } = parse(raw)
+    const { data, content } = parseFrontmatter(raw)
     const slug = path.split('/').pop().replace('.md', '')
     return {
       id: slug,
@@ -72,17 +89,17 @@ export const DEFAULT_POSTS = POSTS.length > 0 ? POSTS : [
 // Managed via Admin Dashboard -> Resources. Saved to localStorage.
 // This is the fallback shown on first load before any admin edits.
 export const DEFAULT_RESOURCES = [
-  { id: 1, name: "Ghidra", desc: "NSA's open-source reverse engineering framework. Primary disassembler for static analysis.", url: "https://ghidra-sre.org", icon: "?", category: "Reversing & Analysis" },
-  { id: 2, name: "x64dbg", desc: "Open-source debugger for dynamic analysis on x64/x32 Windows binaries.", url: "https://x64dbg.com", icon: "?", category: "Reversing & Analysis" },
-  { id: 3, name: "ANY.RUN", desc: "Interactive malware sandbox for quick behavioural analysis and IOC extraction.", url: "https://any.run", icon: "?", category: "Reversing & Analysis" },
-  { id: 4, name: "MITRE ATT&CK", desc: "The adversary behaviour knowledge base. Every detection maps back here.", url: "https://attack.mitre.org", icon: "?", category: "Threat Intelligence" },
-  { id: 5, name: "MalwareBazaar", desc: "Abuse.ch malware sample repository with YARA matching.", url: "https://bazaar.abuse.ch", icon: "?", category: "Threat Intelligence" },
-  { id: 6, name: "AlienVault OTX", desc: "Open threat exchange platform with community-sourced IOC pulses.", url: "https://otx.alienvault.com", icon: "?", category: "Threat Intelligence" },
-  { id: 7, name: "Sigma", desc: "Generic SIEM rule format. Write once, translate to Kibana, Splunk, Wazuh and more.", url: "https://github.com/SigmaHQ/sigma", icon: "S", category: "Detection Engineering" },
-  { id: 8, name: "Atomic Red Team", desc: "Test library for validating detections against real MITRE ATT&CK techniques.", url: "https://github.com/redcanaryco/atomic-red-team", icon: "?", category: "Detection Engineering" },
-  { id: 9, name: "MalDev Academy", desc: "Structured malware development curriculum in C/C++ -- understand implants from the inside.", url: "https://maldevacademy.com", icon: "?", category: "Learning & Reference" },
-  { id: 10, name: "LOLBAS Project", desc: "Living-off-the-Land Binaries, Scripts and Libraries catalogue for detection coverage.", url: "https://lolbas-project.github.io", icon: "?", category: "Learning & Reference" },
-  { id: 11, name: "The DFIR Report", desc: "Detailed real-world intrusion write-ups. Best source of adversary TTPs.", url: "https://thedfirreport.com", icon: "?", category: "Learning & Reference" },
+  { id: 1,  name: "Ghidra",          desc: "NSA's open-source reverse engineering framework. Primary disassembler for static analysis.",          url: "https://ghidra-sre.org",                       icon: "?", category: "Reversing & Analysis"    },
+  { id: 2,  name: "x64dbg",          desc: "Open-source debugger for dynamic analysis on x64/x32 Windows binaries.",                             url: "https://x64dbg.com",                           icon: "?", category: "Reversing & Analysis"    },
+  { id: 3,  name: "ANY.RUN",         desc: "Interactive malware sandbox for quick behavioural analysis and IOC extraction.",                      url: "https://any.run",                              icon: "?", category: "Reversing & Analysis"    },
+  { id: 4,  name: "MITRE ATT&CK",    desc: "The adversary behaviour knowledge base. Every detection maps back here.",                             url: "https://attack.mitre.org",                     icon: "?", category: "Threat Intelligence"      },
+  { id: 5,  name: "MalwareBazaar",   desc: "Abuse.ch malware sample repository with YARA matching.",                                             url: "https://bazaar.abuse.ch",                      icon: "?", category: "Threat Intelligence"      },
+  { id: 6,  name: "AlienVault OTX",  desc: "Open threat exchange platform with community-sourced IOC pulses.",                                   url: "https://otx.alienvault.com",                   icon: "?", category: "Threat Intelligence"      },
+  { id: 7,  name: "Sigma",           desc: "Generic SIEM rule format. Write once, translate to Kibana, Splunk, Wazuh and more.",                 url: "https://github.com/SigmaHQ/sigma",             icon: "S",  category: "Detection Engineering"   },
+  { id: 8,  name: "Atomic Red Team", desc: "Test library for validating detections against real MITRE ATT&CK techniques.",                       url: "https://github.com/redcanaryco/atomic-red-team",icon: "?", category: "Detection Engineering"   },
+  { id: 9,  name: "MalDev Academy",  desc: "Structured malware development curriculum in C/C++ -- understand implants from the inside.",          url: "https://maldevacademy.com",                    icon: "?", category: "Learning & Reference"     },
+  { id: 10, name: "LOLBAS Project",  desc: "Living-off-the-Land Binaries, Scripts and Libraries catalogue for detection coverage.",              url: "https://lolbas-project.github.io",             icon: "?", category: "Learning & Reference"     },
+  { id: 11, name: "The DFIR Report", desc: "Detailed real-world intrusion write-ups. Best source of adversary TTPs.",                            url: "https://thedfirreport.com",                    icon: "?", category: "Learning & Reference"     },
 ]
 
 // -- About default data ----------------------------------------------------
@@ -112,12 +129,12 @@ export const ALL_TAGS = [
 ]
 
 export const TAG_STYLES = {
-  "Reverse Engineering": { color: "#5ef5b8", bg: "rgba(94,245,184,0.12)" },
-  "CTF":                 { color: "#f5c842", bg: "rgba(245,200,66,0.12)" },
-  "Incident Response":   { color: "#f0604a", bg: "rgba(240,96,74,0.12)" },
-  "Threat Hunting":      { color: "#60d5f5", bg: "rgba(96,213,245,0.12)" },
+  "Reverse Engineering": { color: "#5ef5b8", bg: "rgba(94,245,184,0.12)"  },
+  "CTF":                 { color: "#f5c842", bg: "rgba(245,200,66,0.12)"  },
+  "Incident Response":   { color: "#f0604a", bg: "rgba(240,96,74,0.12)"   },
+  "Threat Hunting":      { color: "#60d5f5", bg: "rgba(96,213,245,0.12)"  },
   "Threat Intel":        { color: "#a78bfa", bg: "rgba(167,139,250,0.12)" },
-  "Malware Development": { color: "#f5904a", bg: "rgba(245,144,74,0.12)" },
+  "Malware Development": { color: "#f5904a", bg: "rgba(245,144,74,0.12)"  },
   "Forensics":           { color: "#c8956c", bg: "rgba(200,149,108,0.12)" },
-  "Malware Analysis":    { color: "#a855f7", bg: "rgba(168,85,247,0.12)" },
+  "Malware Analysis":    { color: "#a855f7", bg: "rgba(168,85,247,0.12)"  },
 }

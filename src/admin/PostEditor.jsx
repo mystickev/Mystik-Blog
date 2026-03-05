@@ -128,7 +128,7 @@ export default function PostEditor({ post, onSave, onCancel }) {
           </div>
           {form.title && (
             <div style={{ fontFamily: FONTS.mono, fontSize: 10, color: COLORS.textMuted, marginTop: 4 }}>
-              -> will save as <span style={{ color: COLORS.accent }}>{slug}.md</span>
+              {'->'} will save as <span style={{ color: COLORS.accent }}>{slug}.md</span>
             </div>
           )}
         </div>
@@ -146,8 +146,8 @@ export default function PostEditor({ post, onSave, onCancel }) {
       <div style={{ ...S.card, background: 'rgba(94,245,184,0.03)', borderColor: 'rgba(94,245,184,0.15)', marginBottom: 24, display: 'flex', alignItems: 'center', gap: 12 }}>
         <span style={{ fontSize: 18 }}>?</span>
         <div style={{ fontFamily: FONTS.mono, fontSize: 11, color: COLORS.textMuted, lineHeight: 1.7 }}>
-          <span style={{ color: COLORS.accent }}>Workflow:</span> Write post -> <strong style={{ color: COLORS.text }}>? Download .md</strong> -> Move to{' '}
-          <code style={{ color: COLORS.accent, background: COLORS.surface, padding: '1px 6px', borderRadius: 3 }}>src/posts/</code> ->{' '}
+          <span style={{ color: COLORS.accent }}>Workflow:</span> Write post {'->'} <strong style={{ color: COLORS.text }}>? Download .md</strong> -> Move to{' '}
+          <code style={{ color: COLORS.accent, background: COLORS.surface, padding: '1px 6px', borderRadius: 3 }}>src/posts/</code> {'->'}{' '}
           <code style={{ color: COLORS.accent, background: COLORS.surface, padding: '1px 6px', borderRadius: 3 }}>git add . && git commit && git push</code> -> Live in ~2 mins
         </div>
       </div>

@@ -13,13 +13,16 @@ const NAV = [
   { id: 'about',     icon: '👤', label: 'about page' },
 ]
 
-function PostsList({ posts, onEdit, onNew, onDelete }) {
+function PostsList({ posts, onEdit, onNew, onDelete, onExport }) {
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 28 }}>
-        <div style={{ fontFamily: FONTS.display, fontSize: 26, fontWeight: 600, letterSpacing: -0.3 }}>Posts</div>
-        <button style={S.btnPrimary} onClick={onNew}>+ New Post</button>
-      </div>
+	<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 28 }}>
+	  <div style={{ fontFamily: FONTS.display, fontSize: 26, fontWeight: 600, letterSpacing: -0.3 }}>Posts</div>
+	  <div style={{ display: 'flex', gap: 10 }}>
+	    <button style={S.btnSecondary} onClick={onExport}>? Export All .md</button>
+	    <button style={S.btnPrimary} onClick={onNew}>+ New Post</button>
+	  </div>
+	</div>
       {posts.length === 0 && (
         <div style={{ color: COLORS.textMuted, fontFamily: FONTS.mono, fontSize: 13 }}>// No posts yet. Click "New Post" to get started.</div>
       )}
@@ -61,6 +64,24 @@ export default function Dashboard({ posts, resources, about, onSavePosts, onSave
     setCreating(false)
   }
 
+// Add this function inside Dashboard component, near the other handlers:
+  const exportAllPosts = () => {
+    posts.forEach((post, i) => {
+      setTimeout(() => {
+        const slug = (post.title || 'untitled').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+        const mitre = Array.isArray(post.mitre) ? post.mitre.join(', ') : post.mitre || ''
+        const content = `---\ntitle: ${post.title}\ntag: ${post.tag}\ndate: ${post.date}\nreadTime: ${post.readTime}\nexcerpt: ${post.excerpt}\nmitre: ${mitre}\n---\n\n${post.content || ''}`
+        const blob = new Blob([content], { type: 'text/markdown' })
+        const url = URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.href = url
+        a.download = `${slug}.md`
+        a.click()
+        URL.revokeObjectURL(url)
+      }, i * 800)
+    })
+  }
+  
   const deletePost = (id) => {
     if (!confirm('Delete this post? This cannot be undone.')) return
     onSavePosts(posts.filter(p => p.id !== id))
@@ -100,7 +121,7 @@ export default function Dashboard({ posts, resources, about, onSavePosts, onSave
         {section === 'posts' && (
           editingPost ? <PostEditor post={editingPost} onSave={savePost} onCancel={() => setEditing(null)} />
           : creating   ? <PostEditor post={null}        onSave={savePost} onCancel={() => setCreating(false)} />
-          : <PostsList posts={posts} onEdit={setEditing} onNew={() => setCreating(true)} onDelete={deletePost} />
+          : <PostsList posts={posts} onEdit={setEditing} onNew={() => setCreating(true)} onDelete={deletePost} onExport={exportAllPosts} />
         )}
         {section === 'resources' && <ResourceEditor resources={resources} onSave={onSaveResources} />}
         {section === 'about'     && <AboutEditor about={about} onSave={onSaveAbout} />}
