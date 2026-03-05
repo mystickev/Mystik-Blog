@@ -101,7 +101,8 @@ export default function About({ about }) {
               Profile
             </div>
             {[
-              { label: 'Role',     value: 'TVM Team Lead' },
+	      { label: 'WorkPlace',     value: 'SILENSEC AFRICA' },
+              { label: 'Role',     value: 'Threat and Vulnerability Management Team Lead' },
               { label: 'Focus',    value: 'Blue + Purple Team' },
               { label: 'Location', value: 'Nairobi, Kenya' },
             ].map(item => (
