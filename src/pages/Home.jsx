@@ -12,9 +12,9 @@ export default function Home({ posts, onViewAll, onPost }) {
         <div style={{ fontFamily: FONTS.mono, fontSize: 11, color: COLORS.accent, letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: 20, display: 'flex', alignItems: 'center', gap: 10 }}>
           Threat Research | Malware Analysis | Malware Development
         </div>
-        <h1 style={{ fontFamily: FONTS.display, fontSize: 'clamp(38px,5.5vw,66px)', fontWeight: 700, lineHeight: 1.08, letterSpacing: -1.5, marginBottom: 20, maxWidth: 640 }}>
-          Structured Analysis of <em style={{ fontStyle: 'italic', color: COLORS.accent }}>adversary's</em> craft.
-        </h1>
+	<h1 style={{ fontFamily: FONTS.display, fontSize: 'clamp(38px,5.5vw,66px)', fontWeight: 700, lineHeight: 1.08, letterSpacing: -1.5, marginBottom: 20, maxWidth: 640 }}>
+	  Where  <em style={{ fontStyle: 'italic', color: COLORS.accent }}> offensive techniques </em> meet <em style={{ fontStyle: 'italic', color: COLORS.accent }}>defensive logic.</em>
+	</h1>
         <p style={{ maxWidth: 460, color: COLORS.textDim, fontSize: 15, lineHeight: 1.75, marginBottom: 32 }}>
           Field notes, write-ups, and technical deep-dives in everything Cyber Security.
         </p>
