@@ -52,18 +52,20 @@ export const DEFAULT_ABOUT = {
 
 export const ALL_TAGS = [
   "Reverse Engineering",
-  "LOLBins",
+  "CTF",
   "Incident Response",
   "Threat Hunting",
   "Threat Intel",
-  "MITRE ATT&CK",
+  "Malware Development",
+  "Forensics",
 ]
 
 export const TAG_STYLES = {
   "Reverse Engineering": { color: "#5ef5b8", bg: "rgba(94,245,184,0.12)" },
-  "LOLBins":            { color: "#f5c842", bg: "rgba(245,200,66,0.12)" },
+  "CTF":            { color: "#f5c842", bg: "rgba(245,200,66,0.12)" },
   "Incident Response":  { color: "#f0604a", bg: "rgba(240,96,74,0.12)" },
   "Threat Hunting":     { color: "#60d5f5", bg: "rgba(96,213,245,0.12)" },
   "Threat Intel":       { color: "#a78bfa", bg: "rgba(167,139,250,0.12)" },
-  "MITRE ATT&CK":       { color: "#f5904a", bg: "rgba(245,144,74,0.12)" },
+  "Malware Development":       { color: "#f5904a", bg: "rgba(245,144,74,0.12)" },
+  "Forensics":       { color: "#c8956c", bg: "rgba(200,149,108,0.12)" },
 }

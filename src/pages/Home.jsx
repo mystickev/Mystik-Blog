@@ -9,13 +9,13 @@ export default function Home({ posts, onViewAll, onPost }) {
         <div style={{ position: 'absolute', top: -60, left: -80, width: 500, height: 500, background: 'radial-gradient(ellipse, rgba(94,245,184,0.05) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ fontFamily: FONTS.mono, fontSize: 11, color: COLORS.accent, letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: 20, display: 'flex', alignItems: 'center', gap: 10 }}>
           <span style={{ display: 'inline-block', width: 28, height: 1, background: COLORS.accent }} />
-          Threat Research & Malware Analysis
+          Threat Research | Malware Analysis | Malware Development
         </div>
         <h1 style={{ fontFamily: FONTS.display, fontSize: 'clamp(38px,5.5vw,66px)', fontWeight: 700, lineHeight: 1.08, letterSpacing: -1.5, marginBottom: 20, maxWidth: 640 }}>
-          Dissecting the <em style={{ fontStyle: 'italic', color: COLORS.accent }}>adversary's</em> craft.
+          Structured Analysis of <em style={{ fontStyle: 'italic', color: COLORS.accent }}>adversary's</em> craft.
         </h1>
         <p style={{ maxWidth: 460, color: COLORS.textDim, fontSize: 15, lineHeight: 1.75, marginBottom: 32 }}>
-          Field notes, write-ups, and technical deep-dives from a threat hunter and malware analyst embedded in a SOC environment.
+          Field notes, write-ups, and technical deep-dives in everything Cyber Security.
         </p>
         <div style={{ display: 'flex', gap: 40 }}>
           {[
