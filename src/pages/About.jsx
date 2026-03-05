@@ -51,28 +51,23 @@ export default function About({ about }) {
                 Projects & Tools
               </h2>
               <div style={{ display: 'grid', gap: 12 }}>
-                {projects.map((p, i) => (
-                  <div key={i} style={{ background: COLORS.surface, border: `1px solid ${COLORS.border2}`, borderRadius: 8, padding: '16px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16 }}>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ fontFamily: FONTS.mono, fontSize: 13, fontWeight: 500, color: COLORS.text, marginBottom: 5 }}>
-                        {p.name}
-                      </div>
-                      {p.desc && (
-                        <div style={{ fontSize: 13, color: COLORS.textDim, lineHeight: 1.6 }}>{p.desc}</div>
-                      )}
-                    </div>
-                    {p.url && p.url !== 'null' && (
-                      
-                        href={p.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        style={{ fontFamily: FONTS.mono, fontSize: 10, color: COLORS.accent, letterSpacing: '0.08em', textTransform: 'uppercase', textDecoration: 'none', flexShrink: 0, marginTop: 2 }}
-                      >
-                        view ?
-                      </a>
-                    )}
-                  </div>
-                ))}
+		{projects.map((p, i) => (
+		  <div key={i} style={{ background: COLORS.surface, border: `1px solid ${COLORS.border2}`, borderRadius: 8, padding: '16px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16 }}>
+		    <div style={{ flex: 1 }}>
+		      <div style={{ fontFamily: FONTS.mono, fontSize: 13, fontWeight: 500, color: COLORS.text, marginBottom: 5 }}>
+			{p.name}
+		      </div>
+		      {p.desc && (
+			<div style={{ fontSize: 13, color: COLORS.textDim, lineHeight: 1.6 }}>{p.desc}</div>
+		      )}
+		    </div>
+		    {p.url && p.url !== 'null' && (
+		      <a href={p.url} target="_blank" rel="noreferrer" style={{ fontFamily: FONTS.mono, fontSize: 10, color: COLORS.accent, letterSpacing: '0.08em', textTransform: 'uppercase', textDecoration: 'none', flexShrink: 0, marginTop: 2 }}>
+			view ?
+		      </a>
+		    )}
+		  </div>
+		))}
               </div>
             </>
           )}
