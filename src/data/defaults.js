@@ -111,7 +111,7 @@ export const DEFAULT_ABOUT = {
   tools: "Wazuh · Kibana · Cynet EDR · Ghidra · x64dbg · YARA · Volatility · Wireshark · CrackMapExec · Nessus · Atomic Red Team · Python · C/C++",
   certs: "Threat Hunting Practitioner, SOC Analyst L2, Wazuh Detection Engineering, MITRE ATT&CK Fundamentals",
   openTo: "CTF collaborations, threat intel sharing, peer review of malware write-ups, and purple team exercises.",
-  projects: "Detections Rules & IOCs :: A public repository of YARA rules, Wazuh detection rules, and IOC registers including an Africa-focused threat intel feed. :: https://github.com/mystickev/Detections-rules-IOCs || Mystik Blog :: This site -- a self-built static blog using React and Vite, deployed on GitHub Pages with a custom admin dashboard and .md file-based post management. :: https://mystikev.co.ke",
+projects: "Detections Rules & IOCs :: A public repository of YARA rules, Wazuh detection rules, and IOC registers including an Africa-focused threat intel feed. :: https://github.com/mystickev/Detections-rules-IOCs || Mystik Blog :: Self-built static blog using React and Vite, deployed on GitHub Pages with a custom admin dashboard and .md file-based post management. :: https://mystikev.co.ke || EmlRipper :: A tool for parsing and extracting artefacts from .eml email files, useful for phishing analysis and email forensics workflows. :: https://github.com/mystickev/EmlRipper",
 }
 
 // -- Tag configuration -----------------------------------------------------
