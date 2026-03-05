@@ -7,6 +7,8 @@ excerpt: A walkthrough of analysing and deobfuscating heavily obfuscated JavaScr
 mitre: T1027 - Obfuscated Files or Information, T1566.001 - Phishing: Spearphishing Attachment
 ---
 
+![original_code](/images/javascript.png)
+
 Today's topic is driven by a surge in specific email inquiries I've handled in my daily tasks. Typically, these emails come with an attached HTML file. Upon closer inspection, these files often hide a JavaScript payload, which is the adversary's tool to execute their malicious plans.
 
 The prime objective here is the harvesting of Outlook credentials. The crown jewel for these adversaries is the user's OAuth token, which is frequently procured through sophisticated adversary-in-the-middle attacks (AITM).
