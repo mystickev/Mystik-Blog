@@ -23,9 +23,9 @@ export default function Blog({ posts }) {
   })
 
   return (
-    <div style={S.container}>
-      <div style={S.sectionHeader}>
-        <div style={S.sectionTitle}>Write-ups</div>
+    <div className="mystik-container" style={S.container}>
+      <div className="section-header" style={S.sectionHeader}>
+        <div className="section-title" style={S.sectionTitle}>Write-ups</div>
         <div style={{ fontFamily: FONTS.mono, fontSize: 11, color: COLORS.textMuted }}>
           {filtered.length} post{filtered.length !== 1 ? 's' : ''}
         </div>
@@ -33,7 +33,9 @@ export default function Blog({ posts }) {
 
       {/* Search */}
       <div style={{ position: 'relative', marginBottom: 24 }}>
-        <span style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: COLORS.textMuted, fontSize: 16 }}>?</span>
+        <span style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: COLORS.textMuted, fontSize: 16, pointerEvents: 'none' }}>
+          ⌕
+        </span>
         <input
           style={{ ...S.input, paddingLeft: 42, marginBottom: 0 }}
           placeholder="Search posts, techniques, tools..."
@@ -49,7 +51,18 @@ export default function Blog({ posts }) {
           return (
             <button
               key={t}
-              style={{ fontFamily: FONTS.mono, fontSize: 11, padding: '5px 12px', borderRadius: 4, border: active ? '1px solid rgba(94,245,184,0.3)' : `1px solid ${COLORS.border2}`, background: active ? 'rgba(94,245,184,0.1)' : 'transparent', color: active ? COLORS.accent : COLORS.textMuted, cursor: 'pointer', letterSpacing: '0.06em' }}
+              style={{
+                fontFamily: FONTS.mono,
+                fontSize: 11,
+                padding: '5px 12px',
+                borderRadius: 4,
+                border: active ? '1px solid rgba(94,245,184,0.3)' : `1px solid ${COLORS.border2}`,
+                background: active ? 'rgba(94,245,184,0.1)' : 'transparent',
+                color: active ? COLORS.accent : COLORS.textMuted,
+                cursor: 'pointer',
+                letterSpacing: '0.06em',
+                transition: 'all 0.15s ease',
+              }}
               onClick={() => setTag(t)}
             >
               {t}
@@ -61,8 +74,14 @@ export default function Blog({ posts }) {
       {/* Posts */}
       <div style={S.blogGrid}>
         {filtered.length === 0
-          ? <div style={{ textAlign: 'center', padding: '60px 0', fontFamily: FONTS.mono, fontSize: 13, color: COLORS.textMuted }}>// no results found</div>
-          : filtered.map(p => <BlogCard key={p.id} post={p} onClick={() => setActive(p)} />)
+          ? (
+            <div style={{ textAlign: 'center', padding: '60px 0', fontFamily: FONTS.mono, fontSize: 13, color: COLORS.textMuted }}>
+              // no results found
+            </div>
+          )
+          : filtered.map(p => (
+            <BlogCard key={p.id} post={p} onClick={() => setActive(p)} />
+          ))
         }
       </div>
     </div>

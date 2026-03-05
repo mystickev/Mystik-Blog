@@ -3,18 +3,72 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Mystik : Malware Analysis, Threat Research & Detection Engineering" />
-    <title>Mystik</title>
+
+    <!-- ── Primary SEO ──────────────────────────────────────────────────── -->
+    <title>Mystik — Threat Research & Malware Analysis</title>
+    <meta name="description" content="Field notes, write-ups, and technical deep-dives on malware analysis, threat hunting, digital forensics, and adversary tradecraft by Mystik." />
+    <meta name="author" content="Mystik" />
+    <meta name="keywords" content="malware analysis, threat hunting, digital forensics, CTF writeups, reverse engineering, threat research, Wazuh, MITRE ATT&CK, cybersecurity Kenya" />
+    <link rel="canonical" href="https://mystikev.co.ke" />
+
+    <!-- ── Open Graph (Facebook, LinkedIn, WhatsApp previews) ───────────── -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content="https://mystikev.co.ke" />
+    <meta property="og:title"       content="Mystik — Threat Research & Malware Analysis" />
+    <meta property="og:description" content="Field notes, write-ups, and technical deep-dives on malware analysis, threat hunting, digital forensics, and adversary tradecraft." />
+    <meta property="og:image"       content="https://mystikev.co.ke/og-image.png" />
+    <meta property="og:image:width"  content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name"   content="Mystik" />
+    <meta property="og:locale"      content="en_KE" />
+
+    <!-- ── Twitter / X Card ─────────────────────────────────────────────── -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:site"        content="@mystikev" />
+    <meta name="twitter:creator"     content="@mystikev" />
+    <meta name="twitter:title"       content="Mystik — Threat Research & Malware Analysis" />
+    <meta name="twitter:description" content="Field notes, write-ups, and technical deep-dives on malware analysis, threat hunting, and adversary tradecraft." />
+    <meta name="twitter:image"       content="https://mystikev.co.ke/og-image.png" />
+
+    <!-- ── Favicon ──────────────────────────────────────────────────────── -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon"          href="/apple-touch-icon.png" />
+
+    <!-- ── Robots ───────────────────────────────────────────────────────── -->
+    <meta name="robots" content="index, follow" />
+
+    <!-- ── Theme color (browser chrome on mobile) ───────────────────────── -->
+    <meta name="theme-color" content="#09090c" />
+
+    <!-- ── Font performance: preconnect first, then load ────────────────── -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-    <style>
-      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-      body { background: #09090c; color: #dddde8; }
-      ::-webkit-scrollbar { width: 6px; }
-      ::-webkit-scrollbar-track { background: #09090c; }
-      ::-webkit-scrollbar-thumb { background: #25253a; border-radius: 3px; }
-    </style>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!--
+      font-display=swap is appended via &display=swap — fonts load instantly
+      with system fallback, then swap to the web font when ready.
+      Only loading the weights we actually use.
+    -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ── JSON-LD Structured Data ──────────────────────────────────────── -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "Mystik",
+      "url": "https://mystikev.co.ke",
+      "description": "Threat research, malware analysis, digital forensics, and adversary tradecraft write-ups.",
+      "author": {
+        "@type": "Person",
+        "name": "Mystik",
+        "url": "https://mystikev.co.ke"
+      },
+      "inLanguage": "en"
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>

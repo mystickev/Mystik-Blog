@@ -1,0 +1,265 @@
+/* ── Mystik Global Styles ─────────────────────────────────────────────────
+   Responsive overrides, hover states, transitions, and utility classes.
+   Inline styles handle design tokens; this file handles breakpoints + interactions.
+   ────────────────────────────────────────────────────────────────────────── */
+
+/* ── Base resets ─────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #09090c; color: #dddde8; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+button { cursor: pointer; }
+img { max-width: 100%; display: block; }
+
+/* ── Scrollbar ───────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #09090c; }
+::-webkit-scrollbar-thumb { background: #25253a; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3a3a56; }
+
+/* ── Animations ──────────────────────────────────────────────────────────── */
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 10px #5ef5b8; }
+  50%       { opacity: 0.5; box-shadow: 0 0 4px #5ef5b8; }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+/* ── Page fade-in ────────────────────────────────────────────────────────── */
+.page-content { animation: fadeIn 0.25s ease-out; }
+
+/* ── Nav ─────────────────────────────────────────────────────────────────── */
+.nav-links { display: flex; gap: 4px; }
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+  border: none;
+  background: transparent;
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #5a5a78;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.nav-mobile-menu {
+  display: none;
+  flex-direction: column;
+  border-top: 1px solid #1c1c28;
+  padding: 12px 28px 16px;
+  gap: 2px;
+}
+.nav-mobile-menu.open { display: flex; }
+.nav-mobile-item {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  padding: 10px 0;
+  color: #5a5a78;
+  cursor: pointer;
+  border-bottom: 1px solid #1c1c28;
+  letter-spacing: 0.04em;
+  transition: color 0.15s;
+}
+.nav-mobile-item:last-child { border-bottom: none; }
+.nav-mobile-item.active { color: #5ef5b8; }
+.nav-mobile-item:hover { color: #dddde8; }
+
+/* ── Nav link hover ──────────────────────────────────────────────────────── */
+.nav-link-item { transition: color 0.15s, background 0.15s; }
+.nav-link-item:hover { color: #dddde8 !important; }
+
+/* ── Blog card ───────────────────────────────────────────────────────────── */
+.blog-card {
+  transition: background 0.15s ease;
+  border-bottom: 1px solid #1c1c28;
+}
+.blog-card:last-child { border-bottom: none; }
+
+/* ── Resource cards ──────────────────────────────────────────────────────── */
+.resource-card {
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.resource-card:hover {
+  border-color: rgba(94, 245, 184, 0.3) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+.resource-card:hover .resource-url { color: #5ef5b8; }
+
+/* ── Back button ─────────────────────────────────────────────────────────── */
+.back-btn {
+  transition: color 0.15s, transform 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.back-btn:hover { color: #dddde8 !important; transform: translateX(-3px); }
+
+/* ── Image lazy load skeleton ────────────────────────────────────────────── */
+.md-img {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.md-img.loaded { opacity: 1; }
+
+/* ── Post body images ────────────────────────────────────────────────────── */
+.post-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid #25253a;
+}
+
+/* ── Code blocks mobile scroll ───────────────────────────────────────────── */
+.post-body pre { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* ── Footer ──────────────────────────────────────────────────────────────── */
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-links { display: flex; gap: 20px; }
+.footer-link {
+  transition: color 0.15s;
+}
+.footer-link:hover { color: #dddde8 !important; }
+
+/* ── About grid ──────────────────────────────────────────────────────────── */
+.about-grid { display: grid; grid-template-columns: 1fr 280px; gap: 56px; padding-bottom: 80px; }
+.about-sidebar { padding-top: 48px; }
+.skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.profile-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #1c1c28;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+}
+
+/* ── Home hero stats ─────────────────────────────────────────────────────── */
+.hero-stats { display: flex; gap: 40px; }
+
+/* ── Section header ──────────────────────────────────────────────────────── */
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 48px 0 24px;
+  border-bottom: 1px solid #1c1c28;
+  margin-bottom: 36px;
+}
+
+/* ── 404 page ────────────────────────────────────────────────────────────── */
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  padding: 40px 28px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* ── Input focus ─────────────────────────────────────────────────────────── */
+input:focus, textarea:focus, select:focus {
+  border-color: rgba(94, 245, 184, 0.4) !important;
+  box-shadow: 0 0 0 3px rgba(94, 245, 184, 0.06);
+  outline: none;
+}
+
+/* ── date input ──────────────────────────────────────────────────────────── */
+input[type=date]::-webkit-calendar-picker-indicator { filter: invert(0.4); }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Tablet: ≤ 768px ─────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* Nav */
+  .nav-links { display: none; }
+  .nav-hamburger { display: flex; }
+
+  /* About */
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .about-sidebar { padding-top: 0 !important; }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+
+  /* Hero */
+  .hero-stats { gap: 24px; }
+
+  /* Section header */
+  .section-header { padding: 32px 0 20px; }
+
+  /* Footer */
+  .footer-inner {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  /* Blog card — stack meta below title on very small */
+  .blog-card-inner {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  .blog-card-meta { text-align: left !important; }
+
+  /* Post */
+  .post-body { max-width: 100% !important; }
+}
+
+/* ── Mobile: ≤ 480px ─────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+
+  /* Container padding */
+  .mystik-container { padding: 0 16px !important; }
+
+  /* Hero */
+  .hero-section { padding: 48px 0 40px !important; }
+  .hero-stats { gap: 20px; flex-wrap: wrap; }
+  .hero-stat-num { font-size: 22px !important; }
+
+  /* Section title */
+  .section-title { font-size: 24px !important; }
+
+  /* Skills grid — single column on very small */
+  .skills-grid { grid-template-columns: 1fr; }
+
+  /* Resources grid — single column */
+  .resources-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Post title */
+  .post-title { font-size: 26px !important; }
+
+  /* Admin dashboard — hide sidebar, full width */
+  .admin-layout {
+    grid-template-columns: 1fr !important;
+  }
+  .admin-sidebar {
+    display: none !important;
+  }
+}
