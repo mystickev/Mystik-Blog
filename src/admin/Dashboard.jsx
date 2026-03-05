@@ -8,21 +8,21 @@ import { fmtDate, genId } from '../utils/helpers'
 import { clearAdminSession } from '../utils/auth'
 
 const NAV = [
-  { id: 'posts',     icon: '📝', label: 'posts' },
-  { id: 'resources', icon: '🔗', label: 'resources' },
-  { id: 'about',     icon: '👤', label: 'about page' },
+  { id: 'posts',     icon: '?', label: 'posts' },
+  { id: 'resources', icon: '?', label: 'resources' },
+  { id: 'about',     icon: '?', label: 'about page' },
 ]
 
 function PostsList({ posts, onEdit, onNew, onDelete, onExport }) {
   return (
     <div>
-	<div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 28 }}>
-	  <div style={{ fontFamily: FONTS.display, fontSize: 26, fontWeight: 600, letterSpacing: -0.3 }}>Posts</div>
-	  <div style={{ display: 'flex', gap: 10 }}>
-	    <button style={S.btnSecondary} onClick={onExport}>? Export All .md</button>
-	    <button style={S.btnPrimary} onClick={onNew}>+ New Post</button>
-	  </div>
-	</div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 28 }}>
+        <div style={{ fontFamily: FONTS.display, fontSize: 26, fontWeight: 600, letterSpacing: -0.3 }}>Posts</div>
+        <div style={{ display: 'flex', gap: 10 }}>
+          <button style={S.btnSecondary} onClick={onExport}>? Export All .md</button>
+          <button style={S.btnPrimary} onClick={onNew}>+ New Post</button>
+        </div>
+      </div>
       {posts.length === 0 && (
         <div style={{ color: COLORS.textMuted, fontFamily: FONTS.mono, fontSize: 13 }}>// No posts yet. Click "New Post" to get started.</div>
       )}
@@ -34,7 +34,7 @@ function PostsList({ posts, onEdit, onNew, onDelete, onExport }) {
                 {p.tag}
               </span>
               <span style={{ fontFamily: FONTS.mono, fontSize: 10, color: COLORS.textMuted }}>
-                {fmtDate(p.date)} · {p.readTime} read
+                {fmtDate(p.date)} � {p.readTime} read
               </span>
             </div>
             <div style={{ fontFamily: FONTS.display, fontSize: 17, fontWeight: 600, color: COLORS.text, marginBottom: 4 }}>{p.title}</div>
@@ -64,7 +64,6 @@ export default function Dashboard({ posts, resources, about, onSavePosts, onSave
     setCreating(false)
   }
 
-// Add this function inside Dashboard component, near the other handlers:
   const exportAllPosts = () => {
     posts.forEach((post, i) => {
       setTimeout(() => {
@@ -81,7 +80,7 @@ export default function Dashboard({ posts, resources, about, onSavePosts, onSave
       }, i * 800)
     })
   }
-  
+
   const deletePost = (id) => {
     if (!confirm('Delete this post? This cannot be undone.')) return
     onSavePosts(posts.filter(p => p.id !== id))
@@ -112,7 +111,7 @@ export default function Dashboard({ posts, resources, about, onSavePosts, onSave
           ))}
         </div>
         <div style={{ padding: '0 16px' }}>
-          <button style={{ ...S.btnSecondary, width: '100%', fontSize: 11 }} onClick={handleExit}>← exit admin</button>
+          <button style={{ ...S.btnSecondary, width: '100%', fontSize: 11 }} onClick={handleExit}>{'<-'} exit admin</button>
         </div>
       </div>
 

@@ -14,7 +14,11 @@ export default function Blog({ posts }) {
   const filtered = posts.filter(p => {
     const matchTag = tag === 'All' || p.tag === tag
     const q = query.toLowerCase()
-    const matchQ = !q || p.title.toLowerCase().includes(q) || p.excerpt.toLowerCase().includes(q) || p.tag.toLowerCase().includes(q)
+    const matchQ = !q ||
+      p.title.toLowerCase().includes(q) ||
+      p.excerpt.toLowerCase().includes(q) ||
+      p.tag.toLowerCase().includes(q) ||
+      (p.content && p.content.toLowerCase().includes(q))
     return matchTag && matchQ
   })
 
@@ -29,7 +33,7 @@ export default function Blog({ posts }) {
 
       {/* Search */}
       <div style={{ position: 'relative', marginBottom: 24 }}>
-        <span style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: COLORS.textMuted, fontSize: 16 }}>⌕</span>
+        <span style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: COLORS.textMuted, fontSize: 16 }}>?</span>
         <input
           style={{ ...S.input, paddingLeft: 42, marginBottom: 0 }}
           placeholder="Search posts, techniques, tools..."

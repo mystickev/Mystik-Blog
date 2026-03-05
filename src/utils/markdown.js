@@ -13,7 +13,6 @@ export function renderMarkdown(text) {
     .replace(/>/g, '&gt;')
 
     // -- Fenced code blocks (``` lang\n...\n```) ------------------------
-    // Must come BEFORE inline code to avoid conflict
     .replace(/```(\w*)\n([\s\S]*?)```/gm, (_, lang, code) => `
       <div style="background:#0f0f14;border:1px solid #25253a;border-radius:8px;margin:24px 0;overflow:hidden;">
         ${lang ? `<div style="padding:8px 16px;background:#161620;border-bottom:1px solid #25253a;font-family:'JetBrains Mono',monospace;font-size:10px;color:#5a5a78;letter-spacing:0.1em;text-transform:uppercase;">${lang}</div>` : ''}
@@ -47,7 +46,7 @@ export function renderMarkdown(text) {
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g,
       '<a href="$2" target="_blank" rel="noreferrer" style="color:#5ef5b8;border-bottom:1px solid rgba(94,245,184,0.3);text-decoration:none;transition:border-color 0.2s;">$1</a>')
 
-    // -- Bold -- before italic to avoid conflict -------------------------
+    // -- Bold -----------------------------------------------------------
     .replace(/\*\*(.+?)\*\*/g,
       '<strong style="color:#dddde8;font-weight:600;">$1</strong>')
 

@@ -13,7 +13,7 @@ export default function BlogCard({ post, onClick }) {
   const [hov, setHov] = useState(false)
   return (
     <div
-      style={{ ...S.blogCard, background: hov ? COLORS.surface : COLORS.bg, display: 'grid', gridTemplateColumns: '1fr auto', alignItems: 'start', gap: 20, padding: '28px 0', cursor: 'pointer' }}
+      style={{ background: hov ? COLORS.surface : COLORS.bg, display: 'grid', gridTemplateColumns: '1fr auto', alignItems: 'start', gap: 20, padding: '28px 0', cursor: 'pointer' }}
       onClick={onClick}
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}

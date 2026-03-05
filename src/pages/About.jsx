@@ -18,14 +18,14 @@ export default function About({ about }) {
             "{about.tagline}"
           </p>
           {about.bio.split('\n\n').map((para, i) => (
-            <p key={i} style={{ color: COLORS.textDim, fontSize: 15.5, lineHeight: 1.8, marginBottom: 16 }}>{para}</p>
+            <p key={i} style={{ color: COLORS.text, fontSize: 15.5, lineHeight: 1.8, marginBottom: 16 }}>{para}</p>
           ))}
 
           <h2 style={{ fontFamily: FONTS.display, fontSize: 24, fontWeight: 600, margin: '36px 0 14px', letterSpacing: -0.3 }}>Focus Areas</h2>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
             {skills.map(s => (
               <div key={s} style={{ fontFamily: FONTS.mono, fontSize: 12, color: COLORS.textDim, display: 'flex', gap: 8, alignItems: 'center' }}>
-                <span style={{ color: COLORS.accent }}>→</span>{s}
+                <span style={{ color: COLORS.accent }}>{'->'}</span>{s}
               </div>
             ))}
           </div>

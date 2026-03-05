@@ -1,4 +1,4 @@
-// ── Design Tokens ─────────────────────────────────────────────────────────
+// -- Design Tokens ---------------------------------------------------------
 // Single source of truth for all colours, fonts, and shared style objects.
 // Change a value here and it updates everywhere.
 
@@ -25,7 +25,7 @@ export const FONTS = {
   mono:    "'JetBrains Mono', monospace",
 }
 
-// ── Shared style objects ───────────────────────────────────────────────────
+// -- Shared style objects ---------------------------------------------------
 export const S = {
   page:      { fontFamily: FONTS.body, background: COLORS.bg, color: COLORS.text, minHeight: '100vh', fontWeight: 300 },
   container: { maxWidth: 1080, margin: '0 auto', padding: '0 28px' },
@@ -50,7 +50,7 @@ export const S = {
 
   // Post
   postTitle: { fontFamily: FONTS.display, fontSize: 'clamp(28px,4vw,46px)', fontWeight: 700, lineHeight: 1.12, letterSpacing: -1, marginBottom: 18 },
-  postInfo:  { display: 'flex', gap: 20, fontFamily: FONTS.mono, fontSize: 11, color: COLORS.textMuted, letterSpacing: '0.08em', marginBottom: 40, paddingBottom: 32, borderBottom: `1px solid ${COLORS.border}` },
+  postInfo:  { display: 'flex', gap: 20, fontFamily: FONTS.mono, fontSize: 11, color: COLORS.textMuted, letterSpacing: '0.08em', marginBottom: 40, paddingBottom: 32, borderBottom: `1px solid ${COLORS.border}`, flexWrap: 'wrap' },
   postBody:  { maxWidth: 700, paddingBottom: 80 },
 
   // Forms (admin)
@@ -62,7 +62,7 @@ export const S = {
   // Buttons
   btnPrimary:   { background: COLORS.accent, color: COLORS.bg, border: 'none', borderRadius: 6, padding: '9px 20px', fontFamily: FONTS.mono, fontSize: 12, fontWeight: 500, cursor: 'pointer', letterSpacing: '0.06em' },
   btnSecondary: { background: 'transparent', color: COLORS.textMuted, border: `1px solid ${COLORS.border2}`, borderRadius: 6, padding: '9px 20px', fontFamily: FONTS.mono, fontSize: 12, cursor: 'pointer', letterSpacing: '0.06em' },
-  btnDanger:    { background: 'rgba(240,96,74,0.1)', color: COLORS.red, border: 'rgba(240,96,74,0.25)', borderRadius: 6, padding: '7px 14px', fontFamily: FONTS.mono, fontSize: 11, cursor: 'pointer' },
+  btnDanger:    { background: 'rgba(240,96,74,0.1)', color: '#f0604a', border: '1px solid rgba(240,96,74,0.25)', borderRadius: 6, padding: '7px 14px', fontFamily: FONTS.mono, fontSize: 11, cursor: 'pointer' },
 
   // Misc
   card:    { background: COLORS.surface, border: `1px solid ${COLORS.border2}`, borderRadius: 10, padding: 20, marginBottom: 12 },

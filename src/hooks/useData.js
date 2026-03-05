@@ -2,32 +2,31 @@ import { useState, useEffect } from 'react'
 import { storageGet, storageSet } from '../utils/storage'
 import { DEFAULT_POSTS, DEFAULT_RESOURCES, DEFAULT_ABOUT } from '../data/defaults'
 
-// ── useData hook ──────────────────────────────────────────────────────────
-// Manages all site content (posts, resources, about).
-// Loads from persistent storage on mount, falls back to defaults.
-// Exposes save functions that write through to storage automatically.
+// -- useData hook ----------------------------------------------------------
+// Posts are sourced from .md files via DEFAULT_POSTS -- never localStorage.
+// Resources and About are still managed via admin dashboard + localStorage.
 
 export function useData() {
-  const [posts, setPosts]       = useState([])
-  const [resources, setResources] = useState([])
-  const [about, setAbout]       = useState(DEFAULT_ABOUT)
-  const [loaded, setLoaded]     = useState(false)
+  const [posts, setPosts]           = useState([])
+  const [resources, setResources]   = useState([])
+  const [about, setAbout]           = useState(DEFAULT_ABOUT)
+  const [loaded, setLoaded]         = useState(false)
 
   useEffect(() => {
     ;(async () => {
-      const p = await storageGet('mystik:posts')
+      // Posts come from .md files at build time -- localStorage is never used for posts
       const r = await storageGet('mystik:resources')
       const a = await storageGet('mystik:about')
-      setPosts(p ?? DEFAULT_POSTS)
+      setPosts(DEFAULT_POSTS)
       setResources(r ?? DEFAULT_RESOURCES)
       setAbout(a ?? DEFAULT_ABOUT)
       setLoaded(true)
     })()
   }, [])
 
+  // Posts: updates state only -- .md files are the source of truth
   const savePosts = async (updated) => {
     setPosts(updated)
-    await storageSet('mystik:posts', updated)
   }
 
   const saveResources = async (updated) => {

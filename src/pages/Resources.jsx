@@ -1,3 +1,4 @@
+import React from 'react'
 import { S, COLORS, FONTS } from '../theme'
 
 export default function Resources({ resources }) {
@@ -12,8 +13,8 @@ export default function Resources({ resources }) {
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px,1fr))', gap: 14, paddingBottom: 80 }}>
         {categories.map(cat => (
-          <>
-            <div key={`cat-${cat}`} style={{ fontFamily: FONTS.mono, fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: COLORS.textMuted, gridColumn: '1/-1', padding: '6px 0 2px', borderBottom: `1px solid ${COLORS.border}`, marginTop: 8 }}>
+          <React.Fragment key={cat}>
+            <div style={{ fontFamily: FONTS.mono, fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: COLORS.textMuted, gridColumn: '1/-1', padding: '6px 0 2px', borderBottom: `1px solid ${COLORS.border}`, marginTop: 8 }}>
               {cat}
             </div>
             {resources.filter(r => r.category === cat).map(r => (
@@ -26,11 +27,11 @@ export default function Resources({ resources }) {
                 <div style={{ fontWeight: 500, fontSize: 15, marginBottom: 5, color: COLORS.text }}>{r.name}</div>
                 <div style={{ fontSize: 13, color: COLORS.textMuted, lineHeight: 1.6, marginBottom: 12 }}>{r.desc}</div>
                 <div style={{ fontFamily: FONTS.mono, fontSize: 10, color: COLORS.accent, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-                  {r.url.replace('https://', '')} ↗
+                  {r.url.replace('https://', '')} ?
                 </div>
               </a>
             ))}
-          </>
+          </React.Fragment>
         ))}
       </div>
     </div>
