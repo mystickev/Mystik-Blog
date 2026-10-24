@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Longhand — Privacy policy</title>
+<meta name="description" content="How Longhand handles your writing and your Google account data.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ground: #161826;
+    --edge: #3f424d;
+    --text: #e9e9ed;
+    --muted: #b2b6ca;
+    --cream: #ede4d3;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+    --body: "Lato", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--ground); color: var(--text);
+    font-family: var(--body); font-size: 17px; line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 680px; margin: 0 auto; padding: 64px 16px 96px; }
+  .back { font-family: var(--mono); font-size: 12px; color: var(--muted); text-decoration: none; }
+  h1 { font-size: 34px; font-weight: 500; margin: 24px 0 4px; letter-spacing: -0.01em; }
+  .updated { font-family: var(--mono); font-size: 12px; color: var(--muted); margin: 0 0 36px; }
+  h2 { font-size: 20px; font-weight: 700; margin: 40px 0 10px; }
+  p { margin: 0 0 16px; }
+  ul { padding-left: 20px; margin: 0 0 16px; }
+  li { margin-bottom: 8px; }
+  a { color: var(--cream); }
+  strong { font-weight: 700; }
+  footer {
+    margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--edge);
+    font-family: var(--mono); font-size: 12px; color: var(--muted);
+  }
+  @media (max-width: 480px) { h1 { font-size: 28px; } .wrap { padding-top: 40px; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <a class="back" href="index.html">&larr; Longhand</a>
+  <h1>Privacy policy</h1>
+  <p class="updated">Last updated 24 October 2026</p>
+
+  <p>Longhand is a journalling app for Android. This policy explains what it does with what you write and with your Google account. It is short because the app does very little with either.</p>
+
+  <h2>There is no Longhand account and no Longhand server</h2>
+  <p>You do not register. There is no backend that holds your writing, and no operator — including the developer — who can read it. Everything described below happens on your own phone or in your own Google Drive.</p>
+
+  <h2>What stays on your device</h2>
+  <p>Your entries, titles, tags, moods, photographs, voice notes, focuses and settings are stored on the phone in a database that is encrypted on disk. The encryption key is generated on the device and held in the Android hardware keystore. If you set a passcode, it is required to open the app.</p>
+  <p>None of this is transmitted anywhere unless you turn on one of the two optional features below.</p>
+
+  <h2>Optional: backup to your Google Drive</h2>
+  <p>If you sign in with Google and turn on backup, Longhand writes a single encrypted file to your Drive. Specifically:</p>
+  <ul>
+    <li>It requests one scope, <strong>drive.appdata</strong>. That scope gives access <em>only</em> to a hidden, per-application folder in your own Drive. The app cannot see, read, list or modify any other file in your Drive, and does not ask for permission to.</li>
+    <li>The backup is encrypted on the phone, with a key derived from your passcode, before it is uploaded. Google stores an opaque blob. Google cannot read your journal, and neither can the developer.</li>
+    <li>The file lives in your Drive, under your control. Deleting it, or disconnecting the app from your Google account, removes it.</li>
+    <li>Signing in also reads your email address, which is used for one thing: showing you which account the backup belongs to. It is stored on the device and sent nowhere.</li>
+  </ul>
+  <p>Longhand's use of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements. Google user data is used solely to provide the backup feature described above. It is never sold, never transferred to anyone else, never used for advertising, and never used to train any model. No human reads it.</p>
+
+  <h2>Optional: AI rewording</h2>
+  <p>Longhand can word one of its own observations more naturally. This is off unless you supply your own API key for the service, and when it is off nothing is ever sent.</p>
+  <p>When it is on, what is transmitted is <strong>one sentence the app has already written and was going to show you anyway</strong>, together with the handful of names and numbers already inside that sentence. The pattern behind it was found on the device before anything was sent. Your entries, their text, their dates and any identifier for you are <strong>not</strong> transmitted. The reply is checked on the device, and if anything is wrong with it the app's own sentence is shown instead.</p>
+
+  <h2>What is never collected</h2>
+  <ul>
+    <li>No analytics or telemetry of any kind.</li>
+    <li>No advertising, ad identifiers or ad networks.</li>
+    <li>No crash reporting that carries your content.</li>
+    <li>No contacts, no call or message logs, no browsing history.</li>
+    <li>No location, unless you attach a place to an entry yourself, in which case it is stored with that entry on the device like any other part of it.</li>
+    <li>No third-party SDK that collects data on its own behalf.</li>
+  </ul>
+
+  <h2>Your control</h2>
+  <ul>
+    <li>Export everything as a plain text file, or as an encrypted transfer file, at any time.</li>
+    <li>Delete any entry, or delete everything, from within the app. Deleting the app removes the database and its key with it.</li>
+    <li>Revoke the app's access to your Google account at any time from your <a href="https://myaccount.google.com/permissions" rel="noopener">Google account permissions page</a>. Backup then stops; your writing on the phone is untouched.</li>
+  </ul>
+
+  <h2>Children</h2>
+  <p>Longhand is not directed at children under 13 and does not knowingly collect anything from them.</p>
+
+  <h2>Changes</h2>
+  <p>If this policy changes, the date at the top changes with it. A change that affects what leaves your device will be announced in the app before it takes effect.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about this policy, or about what the app does with anything: <a href="mailto:CONTACT_EMAIL_HERE">CONTACT_EMAIL_HERE</a>.</p>
+
+  <footer>
+    <p>Longhand &middot; <a href="index.html">Home</a></p>
+  </footer>
+
+</main>
+</body>
+</html>
